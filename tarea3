@@ -1,0 +1,73 @@
+Clase Vector2D para representar vectores en el plano
+class Vector2D {
+    private double x;  // Componente en el eje X
+    private double y;  // Componente en el eje Y
+
+    // Constructor
+    public Vector2D(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Métodos getter para acceder a las componentes
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    // Suma de dos vectores
+    public Vector2D sumar(Vector2D otro) {
+        return new Vector2D(this.x + otro.x, this.y + otro.y);
+    }
+
+    // Resta de dos vectores
+    public Vector2D restar(Vector2D otro) {
+        return new Vector2D(this.x - otro.x, this.y - otro.y);
+    }
+
+    // Multiplicación por un escalar
+    public Vector2D multiplicar(double escalar) {
+        return new Vector2D(this.x * escalar, this.y * escalar);
+    }
+
+    // División por un escalar
+    public Vector2D dividir(double escalar) {
+        if (escalar == 0) {
+            throw new ArithmeticException("No se puede dividir entre cero.");
+        }
+        return new Vector2D(this.x / escalar, this.y / escalar);
+    }
+
+    // Sobreescribimos el método toString() para imprimir el vector
+    @Override
+    public String toString() {
+        return this.x + "i + " + this.y + "j";
+    }
+
+    // Método main para pruebas
+    public static void main(String[] args) {
+        // Creamos dos vectores
+        Vector2D a = new Vector2D(3, 4);
+        Vector2D b = new Vector2D(1, 2);
+
+        // Suma de vectores
+        Vector2D suma = a.sumar(b);
+        System.out.println("a + b = " + suma);
+
+        // Resta de vectores
+        Vector2D resta = a.restar(b);
+        System.out.println("a - b = " + resta);
+
+        // Multiplicación por un escalar
+        double escalar = 2;
+        Vector2D multiplicacionEscalar = a.multiplicar(escalar);
+        System.out.println("r * a = " + multiplicacionEscalar);
+
+        // División por un escalar
+        Vector2D divisionEscalar = a.dividir(escalar);
+        System.out.println("a / r = " + divisionEscalar);
+    }
+}
